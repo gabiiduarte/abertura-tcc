@@ -1,0 +1,307 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filmes de Animação</title>
+    <link rel="stylesheet" href="stylec.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="https://kit.fontawesome.com/be7a32246a.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Honk&family=Rubik+Doodle+Triangles&display=swap" rel="stylesheet">
+    <style>
+        /* Adicione alguns estilos básicos */
+        body {
+            font-family: 'Rubik Doodle Triangles', sans-serif;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .search-bar {
+            padding: 5px;
+            font-size: 16px;
+        }
+        .movie-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .movie {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .movie:hover {
+            transform: scale(1.05);
+        }
+        .movie-image {
+            width: 100%;
+            border-radius: 8px 8px 0 0;
+        }
+        #movie-details {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgb(0, 0, 0);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        } 
+        #movie-details.hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dragao">
+        <i class="fa-solid fa-dragon fa-lg" style="color: #77d1ec;"></i>
+    </div>
+
+    <nav class="w3-bar w3-black">
+        <a href="#" class="w3-button w3-bar-item">PRINCIPAL</a>
+        <a href="TEMAA/index.html" class="w3-button w3-bar-item">SÉRIE</a>
+        <a href="#" class="w3-button w3-bar-item">AJUDA</a>
+        <a href="#" class="w3-button w3-bar-item">NOVO</a>
+        <a href="NOSTALGIA/INDEX.HTML" class="w3-button w3-bar-item">NOSTALGIA</a>
+    </nav>
+
+    <header>
+        <div class="logo">Minha Animação</div>
+        <input type="text" placeholder="Buscar filmes..." class="search-bar">
+    </header>
+
+    <main>
+        <section class="w3-container w3-center w3-content">
+            <h2 class="w3-wide">CartoonCine</h2>
+            <p class="bm"><i>BEM-VINDO!</i></p>
+        </section>
+
+        <div class="movie-grid">
+            <div class="movie" onclick="showDetails('toyStory')">
+                <img src="https://th.bing.com/th/id/OIP.Gpco4QFscjlSTYC7NgFtpwHaLD?rs=1&pid=ImgDetMain" alt="Toy Story" class="movie-image">
+                <h3>Toy Story</h3>
+                <p>Direção: John Lasseter</p>
+            </div>
+            <div class="movie" onclick="showDetails('estranhoMundoDeJack')">
+                <img src="https://th.bing.com/th/id/OIP.Qa_VbmVlMBJcJxu5mTnFEAAAAA?rs=1&pid=ImgDetMain" alt="Estranho Mundo De Jack" class="movie-image">
+                <h3>Estranho Mundo De Jack</h3>
+                <p>Direção: Chris Buck, Jennifer Lee</p>
+            </div>
+            <div class="movie" onclick="showDetails('rango')">
+                <img src="https://th.bing.com/th/id/R.1d80aacbeacb016cb86ff8b70d329492?rik=Og%2fWaCC0crcTbg&pid=ImgRaw&r=0" alt="Rango" class="movie-image">
+                <h3>Rango</h3>
+                <p>Um camaleão da cidade grande que vai parar no velho oeste.</p>
+            </div>
+            <div class="movie" onclick="showDetails('osCroods')">
+                <img src="https://th.bing.com/th/id/OIP.0C4WhJwHxbSqbWHbr9p9IwHaLH?rs=1&pid=ImgDetMain" alt="Os Croods" class="movie-image">
+                <h3>Os Croods</h3>
+                <p>Uma família liderada por um pai que teme o mundo exterior.</p>
+            </div>
+            <div class="movie" onclick="showDetails('frozen')">
+                <img src="https://th.bing.com/th/id/R.4aa8f1c58d1a60ef0e7e38dcbdc665d9?rik=2A9ISnBzGKXy7A&pid=ImgRaw&r=0" alt="Frozen" class="movie-image">
+                <h3>Frozen</h3>
+                <p>Direção: Chris Buck, Jennifer Lee</p>
+            </div>
+            <div class="movie" onclick="showDetails('moana')">
+                <img src="https://image.tmdb.org/t/p/original/4yGzhOVqBliZOBZZ4rDKpQoexb.jpg" alt="Moana" class="movie-image">
+                <h3>Moana</h3>
+                <p>Direção: Ron Clements, John Musker</p>
+            </div>
+            <div class="movie" onclick="showDetails('zootopia')">
+                <img src="https://th.bing.com/th/id/R.dc1ebfc22c815039444362dcc0a90390?rik=vLqnr%2btMmdz71g&pid=ImgRaw&r=0" alt="Zootopia" class="movie-image">
+                <h3>Zootopia</h3>
+                <p>Direção: Byron Howard, Rich Moore</p>
+            </div>
+            <div class="movie" onclick="showDetails('shrek')">
+                <img src="https://th.bing.com/th/id/OIP._6kaHg81NqU6SM2UwBe87AHaK-?rs=1&pid=ImgDetMain" alt="Shrek" class="movie-image">
+                <h3>Shrek</h3>
+                <p>Direção: Andrew Adamson, Vicky Jenson</p>
+            </div>
+            <div class="movie" onclick="showDetails('findingNemo')">
+                <img src="https://th.bing.com/th/id/OIP.2F4N7H21iATiNTUNjmguvgHaKB?rs=1&pid=ImgDetMain" alt="Procurando Nemo" class="movie-image">
+                <h3>Procurando Nemo</h3>
+                <p>Direção: Andrew Stanton</p>
+            </div>
+            <div class="movie" onclick="showDetails('insideOut')">
+                <img src="https://th.bing.com/th/id/OIP.tNgPAB5qFEPxhGCENjFVbgHaKj?rs=1&pid=ImgDetMain" alt="Divertida Mente" class="movie-image">
+                <h3>Divertida Mente</h3>
+                <p>Direção: Pete Docter, Ronnie del Carmen</p>
+            </div>
+            <div class="movie" onclick="showDetails('theIncredibles')">
+                <img src="https://image.tmdb.org/t/p/original/tJndry96mp6DuRNIRjfUGyt0I4D.jpg" alt="Os Incríveis" class="movie-image">
+                <h3>Os Incríveis</h3>
+                <p>Direção: Brad Bird</p>
+            </div>
+            <div class="movie" onclick="showDetails('ratatouille')">
+                <img src="https://m.media-amazon.com/images/M/MV5BMDExNTE0ZGUtNDhkNC00YjZlLWJkYmMtMDc2ODhhZDBjYmMxXkEyXkFqcGdeQXVyMTA0MTM5NjI2._V1_.jpg" alt="Ratatouille" class="movie-image">
+                <h3>Ratatouille</h3>
+                <p>Direção: Brad Bird, Jan Pinkava</p>
+            </div>
+            <div class="movie" onclick="showDetails('tangled')">
+                <img src="https://th.bing.com/th/id/OIP.AfATBtg7PxAWL0TiBpOBCQHaKh?rs=1&pid=ImgDetMain" alt="Enrolados" class="movie-image">
+                <h3>Enrolados</h3>
+                <p>Direção: Nathan Greno, Byron Howard</p>
+            </div>
+            <div class="movie" onclick="showDetails('despicableMe')">
+                <img src="https://www.cafecomfilme.com.br/media/k2/items/cache/73bf53eb5428aa4b9a36e143f0ae9ef4_XL.jpg?t=20210624_160101" alt="Meu Malvado Favorito" class="movie-image">
+                <h3>Meu Malvado Favorito</h3>
+                <p>Direção: Pierre Coffin, Chris Renaud</p>
+            </div>
+            <div class="movie" onclick="showDetails('howToTrainYourDragon')">
+                <img src="https://th.bing.com/th/id/R.8c3764e9d1925eea6419be9ca215634e?rik=MXhQoWhoXmIdNg&riu=http%3a%2f%2fwww.nossocinema.com.br%2fwp-content%2fuploads%2f2019%2f01%2fzjDCftH3vmGTrDrxHj3KlrPxwGh-715x1024.jpg&ehk=PQt64eMHl2qYeWRv1S8wO3n9jA99AU4K1Aqa9D7t5lU%3d&risl=&pid=ImgRaw&r=0" alt="Como Treinar o Seu Dragão" class="movie-image">
+                <h3>Como Treinar o Seu Dragão</h3>
+                <p>Direção: Dean DeBlois, Chris Sanders</p>
+            </div>
+            <div class="movie" onclick="showDetails('bigHero6')">
+                <img src="https://www.ocamundongo.com.br/wp-content/uploads/2015/01/big-hero-6-poster-personagens-camundongo.jpg" alt="Operação Big Hero" class="movie-image">
+                <h3>Operação Big Hero</h3>
+                <p>Direção: Don Hall, Chris Williams</p>
+            </div>
+            <div class="movie" onclick="showDetails('theBossBaby')">
+                <img src="https://br.web.img2.acsta.net/pictures/16/10/18/16/29/576071.jpg" alt="O Poderoso Chefinho" class="movie-image">
+                <h3>O Poderoso Chefinho</h3>
+                <p>Direção: Tom McGrath</p>
+            </div>
+            <div class="movie" onclick="showDetails('coco')">
+                <img src="https://th.bing.com/th/id/OIP.cVg-vcvCaneE6-izErB6fgHaLG?rs=1&pid=ImgDetMain" alt="Coco" class="movie-image">
+                <h3>Coco</h3>
+                <p>Direção: Lee Unkrich, Adrian Molina</p>
+            </div>
+            <div class="movie" onclick="showDetails('pussInBoots')">
+                <img src="https://th.bing.com/th/id/R.885bf30c4a6408d2b9397e75288f9b3c?rik=Drp9%2bBGPkX%2biOw&riu=http%3a%2f%2fbr.web.img3.acsta.net%2fmedias%2fnmedia%2f18%2f89%2f67%2f23%2f20061404.jpg&ehk=Veww8OFWZdgZIu%2fphhD%2f4Q%2b2V4oSRkUZciDWl5gCQA4%3d&risl=&pid=ImgRaw&r=0" alt="Gato de Botas" class="movie-image">
+                <h3>Gato de Botas</h3>
+                <p>Direção: Chris Miller</p>
+            </div>
+            <div class="movie" onclick="showDetails('hotelTransylvania')">
+                <img src="https://static.cinemagia.ro/img/db/movie/01/89/04/hotel-transylvania-868767l.jpg" alt="Hotel Transilvânia" class="movie-image">
+                <h3>Hotel Transilvânia</h3>
+                <p>Direção: Genndy Tartakovsky</p>
+            </div>
+            <div class="movie" onclick="showDetails('theEmojiMovie')">
+                <img src="https://th.bing.com/th/id/R.39d5c098fda173b5104330019f0f73e1?rik=vSF8ETnjUOIwdg&pid=ImgRaw&r=0" alt="Emoji: O Filme" class="movie-image">
+                <h3>Emoji: O Filme</h3>
+                <p>Direção: Tony Leondis</p>
+            </div>
+            <div class="movie" onclick="showDetails('cloudyWithAChanceOfMeatballs')">
+                <img src="https://th.bing.com/th/id/OIP.bilGRtNDtEwWrmRyC-7QvAHaLl?rs=1&pid=ImgDetMain" alt="A Praia dos Sonhos" class="movie-image">
+                <h3>A Praia dos Sonhos</h3>
+                <p>Direção: Phil Lord, Christopher Miller</p>
+            </div>
+            <div class="movie" onclick="showDetails('theSecretLifeOfPets')">
+                <img src="https://th.bing.com/th/id/OIP.fI5qPIq-QL1RIZmKuUsvxAHaLv?rs=1&pid=ImgDetMain" alt="Pets: A Vida Secreta dos Bichos" class="movie-image">
+                <h3>Pets: A Vida Secreta dos Bichos</h3>
+                <p>Direção: Yarrow Cheney, Chris Renaud</p>
+            </div>
+            <div class="movie" onclick="showDetails('trolls')">
+                <img src="https://th.bing.com/th/id/OIP.V_kJE-1fqsq-h0vP24aW_AHaKf?w=723&h=1024&rs=1&pid=ImgDetMain" alt="Trolls" class="movie-image">
+                <h3>Trolls</h3>
+                <p>Direção: Mike Mitchell, Walt Dohrn</p>
+            </div>
+            <div class="movie" onclick="showDetails('kungFuPanda')">
+                <img src="https://th.bing.com/th/id/R.5279d620278d265139ed98b1f7017b49?rik=6go5G%2fbK8I3ueQ&pid=ImgRaw&r=0" alt="Kung Fu Panda" class="movie-image">
+                <h3>Kung Fu Panda</h3>
+                <p>Direção: Mark Osborne, John Stevenson</p>
+            </div>
+            <div class="movie" onclick="showDetails('spiderManIntoTheSpiderVerse')">
+                <img src="https://th.bing.com/th/id/OIP.JO-tHKf588SLMsCU3sWxIAHaLH?rs=1&pid=ImgDetMain" alt="Spider-Man: No Aranhaverso" class="movie-image">
+                <h3>Spider-Man: No Aranhaverso</h3>
+                <p>Direção: Bob Persichetti, Peter Ramsey, Rodney Rothman</p>
+            </div>
+            <div class="movie" onclick="showDetails('soul')">
+                <img src="https://th.bing.com/th/id/R.1586aa0eab5902f4f689c8b3afa6c449?rik=YA3DlYyX0W9BPA&pid=ImgRaw&r=0" alt="Soul" class="movie-image">
+                <h3>Soul</h3>
+                <p>Direção: Pete Docter, Kemp Powers</p>
+        </div>
+    </main>
+
+    <div id="movie-details" class="hidden">
+        <h2>Detalhes do Filme</h2>
+        <p id="details-text"></p>
+        <button onclick="hideDetails()">Fechar</button>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        function showDetails(movie) {
+            const detailsText = {
+                toyStory: 'Toy Story é um filme de animação de 1995 produzido pela Pixar Animation Studios.',
+                estranhoMundoDeJack: 'Estranho Mundo de Jack é um clássico de Tim Burton sobre o Halloween e o Natal.',
+                rango: 'Rango é um camaleão que se torna xerife em uma cidade do velho oeste.',
+                osCroods: 'Os Croods seguem uma família pré-histórica em uma aventura pela sobrevivência.',
+                frozen: 'Frozen é uma história de amor entre irmãs em um mundo congelado.'
+                Moana: 'Moana é uma jovem navegadora que se embarca em uma missão para salvar seu povo.',
+                zootopia: 'Zootopia é uma cidade onde os animais vivem em harmonia.',
+                 shrek: 'Shrek é um ogro que embarca em uma aventura inesperada.',
+                findingNemo: 'Procurando Nemo é a história de um pai que busca seu filho desaparecido.',
+                insideOut: 'Divertida Mente explora as emoções de uma menina em crescimento.',
+                theIncredibles: 'Os Incríveis é sobre uma família de super-heróis tentando levar uma vida normal.',
+                ratatouille: 'Ratatouille conta a história de um rato que sonha em ser chef.',
+                tangled: 'Enrolados é uma nova versão do conto da Rapunzel.',
+                despicableMe: 'Meu Malvado Favorito segue um vilão que se torna pai.',
+                howToTrainYourDragon: 'Como Treinar o Seu Dragão é sobre a amizade entre um menino e um dragão.',
+                bigHero6: 'Operação Big Hero é uma história de amizade e heroísmo.',
+                theBossBaby: 'O Poderoso Chefinho é sobre um bebê que é um agente secreto.',
+                coco: 'Coco explora a tradição do Dia dos Mortos no México.',
+                pussInBoots: 'Gato de Botas é uma aventura de um gato astuto e encantador.',
+                hotelTransylvania: 'Hotel Transilvânia é sobre um hotel para monstros.',
+                theEmojiMovie: 'Emoji: O Filme se passa dentro de um smartphone.',
+                cloudyWithAChanceOfMeatballs: 'A Praia dos Sonhos é sobre um inventor que cria comida do céu.',
+                theSecretLifeOfPets: 'Pets: A Vida Secreta dos Bichos mostra o que os pets fazem quando os donos não estão.',
+                trolls: 'Trolls é uma festa cheia de música e cores.',
+                kungFuPanda: 'Kung Fu Panda é sobre um panda que se torna um mestre de kung fu.',
+                spiderManIntoTheSpiderVerse: 'Spider-Man: No Aranhaverso apresenta múltiplas versões do Homem-Aranha.',
+                soul: 'Soul explora o significado da vida e a busca por propósito.'
+            };
+
+            document.getElementById('details-text').innerText = detailsText[movie];
+            document.getElementById('movie-details').classList.remove('hidden');
+        }
+
+        function hideDetails() {
+            document.getElementById('movie-details').classList.add('hidden');
+        }
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a href=" https://gabiiduarte.github.io/LayoutRenponsivo/">LAYOUT RENPONSIVO</a>
+<a href=" https://gabiiduarte.github.io/introducao_aoHTML/">INTRODUÇAO AO HTML</a>
+<a href=" https://gabiiduarte.github.io/LISTA-DE-TAREFAS/">LISTA DE TAREFA</a>
+ <a href="https://gabiiduarte.github.io/FORMULARIO/">FORMULARIO</a>
+
+
+
+
+</body>
+</html>
